@@ -1,7 +1,7 @@
 {
-    "name": "olivier127/rbac-bundle",
+    "name": "birkof/rbac-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony PhpRabcBundle allow to use RBAC control access for symfony project",
+    "description": "Symfony package to allow usage ot RBAC control access for your project",
     "keywords": [
         "RBAC", "Security", "Access-Control", "Role", "phprbac.net", "owasp", "symfony", "bundle", "security"
     ],
@@ -19,7 +19,7 @@
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^3.2",
-        "doctrine/orm": "^2.11"
+        "doctrine/orm": "^2.16"
     },
     "autoload": {
         "psr-4": { "PhpRbacBundle\\": "src/" }

@@ -2,6 +2,9 @@
 
 PhpRBACBundle is symfony 6 bundle with full access control library for PHP. It provides NIST Level 2 Standard Hierarchical Role Based Access Control as an easy to use library to PHP developers. It's a rework of the phprbac.net library made by OWASP for symfony 6.
 
+> This is NOT a replacement package for [olivier127/rbac-bundle](https://packagist.org/packages/olivier127/rbac-bundle) 
+> I am using this as an internal requirement where has been further extended with specific functionalities and fixes.
+
 ## Table of Content
 
 * [How it works ?](#how-it-works)
@@ -33,12 +36,28 @@ Go to https://phprbac.net/ :) to have the representation of permissions and role
 </center>
 
 ## Installation
+Before you install this package, you have to proceed with the following commands: 
 
-just include the package with composer:
+- Install dev dependency helper
+```shell
+composer require symfony/maker-bundle --dev
+```
+- Create a new User entity
+```shell
+php bin/console make:user
+```
+- Add new Symfony requirements
+```shell
+composer req symfony/security-bundle symfony/orm-pack symfony/twig-pack
+```
 
-<pre>composer require olivier127/rbac-bundle</pre>
+After all of these, you can include the package with composer:
 
-register the bundle inside config/bundles.php
+```shell
+composer require olivier127/rbac-bundle
+```
+
+Register the bundle inside config/bundles.php
 
 ```php
 
