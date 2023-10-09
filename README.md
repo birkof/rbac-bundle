@@ -2,16 +2,19 @@
 
 PhpRBACBundle is symfony 6 bundle with full access control library for PHP. It provides NIST Level 2 Standard Hierarchical Role Based Access Control as an easy to use library to PHP developers. It's a rework of the phprbac.net library made by OWASP for symfony 6.
 
+> This is NOT a replacement package for [olivier127/rbac-bundle](https://packagist.org/packages/olivier127/rbac-bundle)
+> I am using this as an internal requirement where has been further extended with specific functionalities and fixes.
+
 ## Table of Content
 
 * [How it works ?](#how-it-works)
 * [Installation](#installation)
 * [Configuration](#configuration)
-    * [Prepare Symfony](#prepare-symfony)
-    * [Add PhpRbac configuration](#add-phprbac-configuration)
-    * [Roles and permissions creation](#roles-and-permissions-creation)
-    * [Make the rbac relations](#make-the-rbac-relations)
-    * [Assign Role to the user and check permission](#assign-role-to-the-user-and-check-permission)
+  * [Prepare Symfony](#prepare-symfony)
+  * [Add PhpRbac configuration](#add-phprbac-configuration)
+  * [Roles and permissions creation](#roles-and-permissions-creation)
+  * [Make the rbac relations](#make-the-rbac-relations)
+  * [Assign Role to the user and check permission](#assign-role-to-the-user-and-check-permission)
 * [RBAC for controller](#rbac-for-controller)
 * [Voter based RBAC](#voter-based-rbac)
 * [Symfony CLI commands](#symfony-cli-commands)
@@ -33,12 +36,28 @@ Go to https://phprbac.net/ :) to have the representation of permissions and role
 </center>
 
 ## Installation
+Before you install this package, you have to proceed with the following commands:
 
-just include the package with composer:
+- Install dev dependency helper
+```shell
+composer require symfony/maker-bundle --dev
+```
+- Create a new User entity
+```shell
+php bin/console make:user
+```
+- Add new Symfony requirements
+```shell
+composer req symfony/security-bundle symfony/orm-pack symfony/twig-pack
+```
 
-<pre>composer require olivier127/rbac-bundle</pre>
+After all of these, you can include the package with composer:
 
-register the bundle inside config/bundles.php
+```shell
+composer require olivier127/rbac-bundle
+```
+
+Register the bundle inside config/bundles.php
 
 ```php
 
@@ -281,43 +300,43 @@ security:
 
 ## Symfony CLI commands
 
-  The install command sets the root node role and permission and associates them.
+The install command sets the root node role and permission and associates them.
   ```shell
     security:rbac:install
   ```
 
-  Add permission into the rbac permissions tree
+Add permission into the rbac permissions tree
   ```shell
   security:rbac:permission:add
   ```
 
-  Add permission into the rbac roles tree
+Add permission into the rbac roles tree
   ```shell
   security:rbac:role:add
   ```
 
-  Assign a permission to a role
+Assign a permission to a role
   ```shell
   security:rbac:role:assign-permission
   ```
 
-  Assign a role to a user
+Assign a role to a user
   ```shell
   security:rbac:user:assign-role
   ```
 
-  Theses commandes are interactives.
-  
-  ## Twig
-  
-  test if user has a role
+Theses commandes are interactives.
+
+## Twig
+
+test if user has a role
   ```twig
   {% if hasRole('/the/role') %}
   ...
   {% endif %}
   ```
-  
-  test if user has a permission
+
+test if user has a permission
   ```twig
   {% if hasPermission('/the/permission') %}
   ...
